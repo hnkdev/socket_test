@@ -1,0 +1,56 @@
+unit uClient;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.Win.ScktComp,
+  Vcl.ExtCtrls;
+
+type
+  TfrmClient = class(TForm)
+    btnSend: TButton;
+    ClientSocket: TClientSocket;
+    mmLog: TMemo;
+    edtServerIP: TLabeledEdit;
+    edtServerPort: TLabeledEdit;
+    edtData: TLabeledEdit;
+    procedure btnSendClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmClient: TfrmClient;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmClient.btnSendClick(Sender: TObject);
+var
+  Data: AnsiString;
+begin
+  try
+    if ClientSocket.Active then
+      ClientSocket.Close;
+
+    ClientSocket.Host := edtServerIP.Text;
+    ClientSocket.Port := StrToInt(edtServerPort.Text);
+    try
+      screen.Cursor := crHourGlass;
+      ClientSocket.Open;
+
+      Data := AnsiString(edtData.Text);
+      ClientSocket.Socket.SendText();
+    finally
+      screen.Cursor := crDefault;
+    end;
+
+  except on E: Exception do
+  end;
+end;
+
+end.

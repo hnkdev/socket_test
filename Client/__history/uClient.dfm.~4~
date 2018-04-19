@@ -1,0 +1,76 @@
+object frmClient: TfrmClient
+  Left = 0
+  Top = 0
+  Caption = 'Client'
+  ClientHeight = 241
+  ClientWidth = 244
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnSend: TButton
+    Left = 161
+    Top = 56
+    Width = 75
+    Height = 25
+    Caption = 'Send'
+    TabOrder = 0
+    OnClick = btnSendClick
+  end
+  object mmLog: TMemo
+    Left = 0
+    Top = 88
+    Width = 244
+    Height = 153
+    Align = alBottom
+    TabOrder = 1
+  end
+  object edtServerIP: TLabeledEdit
+    Left = 40
+    Top = 8
+    Width = 121
+    Height = 21
+    EditLabel.Width = 32
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Server'
+    LabelPosition = lpLeft
+    TabOrder = 2
+    Text = '127.0.0.1'
+  end
+  object edtServerPort: TLabeledEdit
+    Left = 40
+    Top = 31
+    Width = 81
+    Height = 21
+    EditLabel.Width = 20
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Port'
+    LabelPosition = lpLeft
+    TabOrder = 3
+    Text = '12345'
+  end
+  object edtData: TLabeledEdit
+    Left = 40
+    Top = 55
+    Width = 41
+    Height = 21
+    EditLabel.Width = 23
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Data'
+    LabelPosition = lpLeft
+    TabOrder = 4
+    Text = 'G'
+  end
+  object ClientSocket: TClientSocket
+    Active = False
+    ClientType = ctNonBlocking
+    Port = 0
+    Left = 184
+    Top = 152
+  end
+end

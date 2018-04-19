@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.392,=C:\Users\admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.573,C:\Users\admin\Documents\Embarcadero\Studio\Projects\Unit1.pas=G:\HnkSoft\Delphi_TEST\Socket_Test\uServer.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.519,=C:\Users\admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.573,C:\Users\admin\Documents\Embarcadero\Studio\Projects\Unit1.dfm=G:\HnkSoft\Delphi_TEST\Socket_Test\uServer.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.514,C:\Users\admin\Documents\Embarcadero\Studio\Projects\Project1.dproj=G:\HnkSoft\Delphi_TEST\Socket_Test\Server.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

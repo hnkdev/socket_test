@@ -1,0 +1,64 @@
+unit uServer;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.Win.ScktComp,
+  Vcl.ExtCtrls;
+
+type
+  TfrmServer = class(TForm)
+    ServerSocket: TServerSocket;
+    mmLog: TMemo;
+    mmData: TMemo;
+    panTop: TPanel;
+    Button1: TButton;
+    procedure ServerSocketClientRead(Sender: TObject; Socket: TCustomWinSocket);
+    procedure ServerSocketClientConnect(Sender: TObject;
+      Socket: TCustomWinSocket);
+    procedure Button1Click(Sender: TObject);
+  private
+    procedure Log(Msg: string);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmServer: TfrmServer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmServer.Button1Click(Sender: TObject);
+begin
+  ServerSocket.Active := True;
+end;
+
+procedure TfrmServer.Log(Msg: string);
+var
+  s: string;
+begin
+  s:= FormatDateTime('yyyy-mm-dd hh:mm:ss ', Now());
+  mmLog.Lines.Add(format('%s : %s',[s, Msg]));
+end;
+
+procedure TfrmServer.ServerSocketClientConnect(Sender: TObject;
+  Socket: TCustomWinSocket);
+begin
+  Log(format('Connected    %s', [Socket.RemoteHost]));
+end;
+
+procedure TfrmServer.ServerSocketClientRead(Sender: TObject;
+  Socket: TCustomWinSocket);
+var
+  ReadData: Ansistring;
+begin
+  SetLength(ReadData, Socket.ReceiveLength);
+  SetLength(ReadData, Socket.ReceiveBuf(Pointer(ReadData)^, length(ReadData)));
+
+  Log('Read Data      ' + ReadData);
+end;
+
+end.
